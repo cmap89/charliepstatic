@@ -123,16 +123,20 @@ section {
     min-height: 42em;
 }
 
-.hero-img {
-    width: 34rem;
-    height: auto;
-}
 
 .hero-img-container {
     position: relative;
     overflow: hidden;
     border-radius: 100%;
     aspect-ratio: 1/1;
+    width: 34rem;
+    height: auto;
+}
+
+.hero-img {
+    position: absolute;
+    height: 140%;
+    object-fit: cover;
 }
 
 .bio {
