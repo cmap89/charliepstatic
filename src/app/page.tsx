@@ -1,7 +1,11 @@
+import PageSection from "@/components/PageSection";
+
 export default function Home() {
   return (
-    <div>
-      
-    </div>
+    <>
+      <PageSection>
+        <h2>Welcome to my Portfolio</h2>
+      </PageSection>
+    </>
   );
 }
