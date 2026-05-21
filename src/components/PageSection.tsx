@@ -13,8 +13,12 @@ export default function PageSection({
   altContStyle,
 }: PageSectionProps) {
   return (
-    <section className={cn("flex w-full flex-col items-center", altSectStyle)}>
-      <div className={cn("w-3/4", altContStyle)}>{children}</div>
+    <section
+      className={cn("flex w-full flex-col items-center py-20", altSectStyle)}
+    >
+      <div className={cn("flex w-3/4 flex-col items-center", altContStyle)}>
+        {children}
+      </div>
     </section>
   );
 }
