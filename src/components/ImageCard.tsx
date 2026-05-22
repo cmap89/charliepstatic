@@ -1,11 +1,14 @@
 import { cn } from "@/utils";
 import Image from "next/image";
+import { ReactNode } from "react";
 
 interface ImageCardProps {
-  src: string;
+  src?: string;
   altImgStyles?: string;
   altImgTxtStyles?: string;
   altImgContStyles?: string;
+  imgCardText?: string;
+  children?: ReactNode;
 }
 
 export default function ImageCard({
@@ -13,6 +16,7 @@ export default function ImageCard({
   altImgStyles,
   altImgTxtStyles,
   altImgContStyles,
+  children,
 }: ImageCardProps) {
   return (
     <div className={cn("flex w-full justify-evenly", altImgContStyles)}>
@@ -22,20 +26,18 @@ export default function ImageCard({
           altImgTxtStyles,
         )}
       >
-        <p>
-          Developer. Musician. Problem Solver. Building thoughtful experiences
-          that resonate. I build things that connect with people.
-        </p>
-        <p>Composing with code. Designing with intention.</p>
+        {children}
       </div>
-      <Image
-        className={cn("w-1/2 bg-zinc-500", altImgStyles)}
-        src={`/images/${src}`}
-        height={1080}
-        width={900}
-        alt="img"
-        loading="lazy"
-      />
+      {src && (
+        <Image
+          className={cn("w-1/2 bg-zinc-500", altImgStyles)}
+          src={`/images/${src}`}
+          height={1080}
+          width={900}
+          alt="img"
+          loading="lazy"
+        />
+      )}
     </div>
   );
 }

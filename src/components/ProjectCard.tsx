@@ -1,30 +1,44 @@
 import { cn } from "@/utils";
 import Image from "next/image";
-import StackTag from "./StackTag";
+import { ReactNode } from "react";
 
-export default function ProjectCard() {
+interface ProjectCardProps {
+  altProjContStyles?: string;
+  src?: string;
+  alt?: string;
+  altProjImgStyles?: string;
+  altProjTxtStyles?: string;
+  children: ReactNode;
+}
+
+export default function ProjectCard({
+  altProjContStyles,
+  src,
+  alt = "",
+  altProjTxtStyles,
+  altProjImgStyles,
+  children,
+}: ProjectCardProps) {
   return (
     <div
       className={cn(
-        "flex min-h-50 min-w-full gap-2 p-5 hover:border hover:border-zinc-500",
+        "flex min-w-full gap-2 p-5 hover:border hover:border-zinc-500",
+        altProjContStyles,
       )}
     >
-      <Image
-        src="/images/cmapofficial_site_thumbnail.png"
-        alt="cmap official website"
-        height={1000}
-        width={1000}
-        className="h-2/5 w-1/5"
-      />
-      <div className="flex flex-col justify-between gap-2">
-        <h3>Project Title</h3>
-        <p>
-          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptas,
-          officia quia excepturi blanditiis, natus dolore accusamus nobis
-          ducimus eaque similique quaerat voluptate adipisci? Unde eaque fuga
-          perferendis fugiat sint asperiores?
-        </p>
-        <StackTag />
+      {src && (
+        <Image
+          src={`/images/${src}`}
+          alt={alt}
+          height={1000}
+          width={1000}
+          className={cn("h-2/5 w-1/5", altProjImgStyles)}
+        />
+      )}
+      <div
+        className={cn("flex flex-col justify-between gap-2", altProjTxtStyles)}
+      >
+        {children}
       </div>
     </div>
   );
