@@ -30,7 +30,7 @@ export default function ImageCard({
       </div>
       {src && (
         <Image
-          className={cn("w-1/2 bg-zinc-500", altImgStyles)}
+          className={cn("w-1/2 bg-zinc-300", altImgStyles)}
           src={`/images/${src}`}
           height={1080}
           width={900}

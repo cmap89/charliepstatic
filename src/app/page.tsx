@@ -4,6 +4,9 @@ import ProjectCard from "@/components/ProjectCard";
 import StackTag from "@/components/StackTag";
 import JourneyCard from "@/components/JourneyCard";
 
+import projects from "@/data/projectList";
+import events from "@/data/journeyList";
+
 export default function Home() {
   return (
     <>
@@ -33,57 +36,34 @@ export default function Home() {
       {/* Journey Section */}
       <PageSection>
         <h2 className="text-3xl font-bold">Journey</h2>
-        <JourneyCard>
-          <div className="w-1/3 text-2xl font-bold">date - date</div>
-          <div className="w-2/3">
-            <h3 className="text-2xl font-bold">
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit
-            </h3>
-            <div>
-              Iusto architecto aperiam quae! Blanditiis corporis, illo incidunt
-              quas hic, suscipit ipsam nam mollitia cumque cupiditate voluptas
-              ratione id consequatur magni dolores. Vitae eligendi quidem error
-              quia incidunt autem voluptatibus. Quae quia nihil repellendus,
-              maiores ad excepturi sequi rem aspernatur, iste, nam reprehenderit
-              dolorem. Veritatis, quas error sit rem eligendi ipsum laudantium!
-              Architecto similique eligendi nihil accusamus hic ipsa suscipit
-              obcaecati, vitae voluptas rem assumenda maiores iusto ad
-              blanditiis. Animi sequi quod quo consectetur ab, dolore eum,
-              nesciunt velit labore deleniti nobis.
-              <StackTag />
-            </div>
-          </div>
-        </JourneyCard>
+        {events.map(({ id, dateFrom, dateTo, title, desc }) => {
+          return (
+            <JourneyCard key={id}>
+              <div className="w-1/3 text-2xl font-bold">{`${dateFrom} - ${dateTo}`}</div>
+              <div className="w-2/3">
+                <h3 className="text-2xl font-bold">{title}</h3>
+                <div>
+                  {desc}
+                  <StackTag />
+                </div>
+              </div>
+            </JourneyCard>
+          );
+        })}
       </PageSection>
 
-      {/* Third Section */}
+      {/* Project Section */}
       <PageSection>
         <h2 className="text-3xl font-bold">Projects</h2>
-        <ProjectCard
-          src="cmapofficial_site_thumbnail.png"
-          alt="cmap official website"
-        >
-          <h3>[Project Title]</h3>
-          <p>
-            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptas,
-            officia quia excepturi blanditiis, natus dolore accusamus nobis
-            ducimus eaque similique quaerat voluptate adipisci? Unde eaque fuga
-            perferendis fugiat sint asperiores?
-          </p>
-          <StackTag />
-        </ProjectCard>
-        <ProjectCard
-          src="cmapofficial_site_thumbnail.png"
-          alt="cmap official website"
-        >
-          <h3>[Project Title]</h3>
-          <p>
-            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptas,
-            officia quia excepturi blanditiis, natus dolore accusamus nobis
-            ducimus eaque similique quaerat voluptate adipisci? Unde eaque fuga
-            perferendis fugiat sint asperiores?
-          </p>
-        </ProjectCard>
+        {projects.map(({ id, title, src, alt, description }) => {
+          return (
+            <ProjectCard key={id} src={src} alt={alt}>
+              <h3 className="font-bold">{title}</h3>
+              <p>{description}</p>
+              <StackTag />
+            </ProjectCard>
+          );
+        })}
       </PageSection>
     </>
   );
