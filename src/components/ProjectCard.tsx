@@ -1,6 +1,6 @@
 import { cn } from "@/utils";
 import Image from "next/image";
-import { ReactNode } from "react";
+import StackTag from "./StackTag";
 
 interface ProjectCardProps {
   altProjContStyles?: string;
@@ -8,7 +8,8 @@ interface ProjectCardProps {
   alt?: string;
   altProjImgStyles?: string;
   altProjTxtStyles?: string;
-  children: ReactNode;
+  title: string;
+  description: string;
 }
 
 export default function ProjectCard({
@@ -17,7 +18,8 @@ export default function ProjectCard({
   alt = "",
   altProjTxtStyles,
   altProjImgStyles,
-  children,
+  title,
+  description,
 }: ProjectCardProps) {
   return (
     <div
@@ -26,19 +28,17 @@ export default function ProjectCard({
         altProjContStyles,
       )}
     >
-      {src && (
-        <Image
-          src={`/images/${src}`}
-          alt={alt}
-          height={1000}
-          width={1000}
-          className={cn("h-2/5 w-1/5", altProjImgStyles)}
-        />
-      )}
+      <div className={cn("h-2/5 w-1/5", altProjImgStyles)}>
+        {src && (
+          <Image src={`/images/${src}`} alt={alt} height={1000} width={1000} />
+        )}
+      </div>
       <div
         className={cn("flex flex-col justify-between gap-2", altProjTxtStyles)}
       >
-        {children}
+        <h3 className="font-bold">{title}</h3>
+        <p>{description}</p>
+        <StackTag />
       </div>
     </div>
   );

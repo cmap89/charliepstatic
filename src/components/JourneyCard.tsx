@@ -1,24 +1,36 @@
 import { cn } from "@/utils";
-import { ReactNode } from "react";
 
 interface JourneyCardProps {
   altJourContStyles?: string;
   altJourTxtStyles?: string;
-  children: ReactNode;
+  dateFrom: string;
+  dateTo: string;
+  title: string;
+  desc: string;
 }
 
 export default function JourneyCard({
   altJourContStyles,
-  children,
+  dateFrom,
+  dateTo,
+  title,
+  desc,
 }: JourneyCardProps) {
   return (
     <div
       className={cn(
-        "flex min-h-50 min-w-full gap-2 p-5 hover:border hover:border-zinc-500",
+        "flex min-w-full gap-2 p-5 hover:border hover:border-zinc-500",
         altJourContStyles,
       )}
     >
-      {children}
+      <div className="w-1/3 text-2xl font-bold">{`${dateFrom} - ${dateTo}`}</div>
+      <div className="w-2/3">
+        <h3 className="text-2xl font-bold">{title}</h3>
+        <div>
+          {desc}
+          {/* <StackTag /> */}
+        </div>
+      </div>
     </div>
   );
 }

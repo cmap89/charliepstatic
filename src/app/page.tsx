@@ -1,7 +1,6 @@
 import PageSection from "@/components/PageSection";
 import ImageCard from "@/components/ImageCard";
 import ProjectCard from "@/components/ProjectCard";
-import StackTag from "@/components/StackTag";
 import JourneyCard from "@/components/JourneyCard";
 
 import projects from "@/data/projectList";
@@ -38,16 +37,13 @@ export default function Home() {
         <h2 className="text-3xl font-bold">Journey</h2>
         {events.map(({ id, dateFrom, dateTo, title, desc }) => {
           return (
-            <JourneyCard key={id}>
-              <div className="w-1/3 text-2xl font-bold">{`${dateFrom} - ${dateTo}`}</div>
-              <div className="w-2/3">
-                <h3 className="text-2xl font-bold">{title}</h3>
-                <div>
-                  {desc}
-                  <StackTag />
-                </div>
-              </div>
-            </JourneyCard>
+            <JourneyCard
+              key={id}
+              dateFrom={dateFrom}
+              dateTo={dateTo}
+              title={title}
+              desc={desc}
+            />
           );
         })}
       </PageSection>
@@ -57,13 +53,20 @@ export default function Home() {
         <h2 className="text-3xl font-bold">Projects</h2>
         {projects.map(({ id, title, src, alt, description }) => {
           return (
-            <ProjectCard key={id} src={src} alt={alt}>
-              <h3 className="font-bold">{title}</h3>
-              <p>{description}</p>
-              <StackTag />
-            </ProjectCard>
+            <ProjectCard
+              key={id}
+              src={src}
+              alt={alt}
+              title={title}
+              description={description}
+            />
           );
         })}
+      </PageSection>
+
+      {/* Resume Section */}
+      <PageSection>
+        <h2 className="text-3xl font-bold">Contact</h2>
       </PageSection>
     </>
   );

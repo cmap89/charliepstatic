@@ -6,7 +6,6 @@ export default function Navbar() {
         <li>Journey</li>
         <li>Projects</li>
         <li>Contact</li>
-        <li>Resume</li>
       </ul>
     </nav>
   );
