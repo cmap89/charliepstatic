@@ -14,7 +14,7 @@ export default function PageSection({
 }: PageSectionProps) {
   return (
     <section
-      className={cn("flex w-full flex-col items-center py-20", altSectStyle)}
+      className={cn("flex w-full flex-col items-center py-10", altSectStyle)}
     >
       <div className={cn("flex w-3/4 flex-col items-center", altContStyle)}>
         {children}
