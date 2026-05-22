@@ -2,6 +2,8 @@ import PageSection from "@/components/PageSection";
 import ImageCard from "@/components/ImageCard";
 import ProjectCard from "@/components/ProjectCard";
 import JourneyCard from "@/components/JourneyCard";
+import Button from "@/components/Button";
+import Form from "@/components/Form";
 
 import projects from "@/data/projectList";
 import events from "@/data/journeyList";
@@ -66,7 +68,16 @@ export default function Home() {
 
       {/* Resume Section */}
       <PageSection>
-        <h2 className="text-3xl font-bold">Contact</h2>
+        <h2 className="text-3xl font-bold">Let&apos;s Connect!</h2>
+        <div className="flex w-full">
+          <div className="flex min-h-50 w-1/2 flex-col items-center justify-center p-3">
+            <h3>Feel free to download a copy of my resume</h3>
+            <Button />
+          </div>
+          <div className="flex min-h-50 w-1/2 flex-col items-center justify-center p-3">
+            <Form />
+          </div>
+        </div>
       </PageSection>
     </>
   );
